@@ -1,11 +1,22 @@
 ## edit from https://github.com/dockette
 
+> for buster
 ```
 FROM dockette/debian:buster
-  php7.4-apc
-  php7.4-mongo
-
+......
+RUN apt install -y --no-install-recommends \
+  php7.4-apc \
+  php7.4-mongo \
+  ......
+......
+```
+> for bullseye
+```
 FROM dockette/debian:bullseye
-  #php7.4-apc
-  php7.4-mongodb
+......
+RUN apt install -y --no-install-recommends \
+  #php7.4-apc \
+  php7.4-mongodb \
+  ......
+......
 ```
