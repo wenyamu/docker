@@ -1,10 +1,6 @@
 #!/bin/bash
 
-#https://docs.docker.com/engine/install/centos/
-echo "################################"
-echo "### 1: 安装 docker-ce_centos ###"
-echo "### 2: 安装 docker-ce_debian ###"
-echo "################################"
+### 自动判断 centos 和 debian 系统安装 docker ###
 
 # 注意：定义的函数名不能含有字符"-"
 ### 一，在 centos 上安装docker-ce
