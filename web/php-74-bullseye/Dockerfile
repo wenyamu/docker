@@ -16,7 +16,7 @@ ENV TZ=Europe/Prague
 # INSTALLATION
 RUN apt update && apt dist-upgrade -y && \
     # DEPENDENCIES #############################################################
-    apt install -y wget curl apt-transport-https ca-certificates gnupg2 cron lsb-release git unzip && \
+    apt install -y wget curl apt-transport-https ca-certificates gnupg2 cron lsb-release && \
     # PHP DEB.SURY.CZ ##########################################################
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list && \
@@ -68,7 +68,7 @@ RUN apt update && apt dist-upgrade -y && \
     rm /etc/nginx/conf.d/default.conf && \
     apt-get clean -y && \
     apt-get autoclean -y && \
-    apt-get remove -y wget curl lsb-release && \
+    apt-get remove -y wget lsb-release && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
 
