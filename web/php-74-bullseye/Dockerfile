@@ -27,7 +27,6 @@ RUN apt update && apt dist-upgrade -y && \
     apt install -y --no-install-recommends \
         nginx \
         supervisor \
-        #php7.4-apc \
         php7.4-apcu \
         php7.4-bz2 \
         php7.4-bcmath \
