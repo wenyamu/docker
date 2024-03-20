@@ -3,7 +3,7 @@ FROM dockette/debian:bullseye-slim
 # TENGINE/NGINX
 ENV TENGINE_VERSION 3.1.0
 
-# PHP
+# PHP-FPM
 ENV PHP_FPM_BIN=/usr/sbin/php-fpm7.4
 ENV PHP_FPM_CONF=/etc/php/7.4/php-fpm.conf
 
