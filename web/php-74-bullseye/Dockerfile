@@ -126,9 +126,8 @@ RUN apt install -y --no-install-recommends \
         php7.4-zip \
         php7.4-xmlrpc \
         php7.4-xsl && \
-    # PHP MOD(s) ###############################################################
     rm -rf /etc/php/7.4/cli && \
-    # CLEAN UP #################################################################
+    # CLEAN
     apt-get clean -y && \
     apt-get autoclean -y && \
     apt-get remove -y gcc make curl ca-certificates && \
