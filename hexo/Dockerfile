@@ -1,7 +1,7 @@
 FROM alpine:3.17.1
 
 # 安装所需的依赖项
-RUN apk add --update --no-cache git=2.38.5-r0 nodejs=18.17.1-r0 npm=9.1.2-r0 rsync=3.2.7-r0
+RUN apk add --update --no-cache git=2.38.5-r0 nodejs=18.17.1-r0 npm=9.1.2-r0 rsync=3.2.7-r0 openssh
 
 # 安装Hexo命令行
 RUN npm install hexo@6.3.0 hexo-cli@4.3.0 hexo-server@3.0.0 -g --unsafe-perm=true --loglevel=error
