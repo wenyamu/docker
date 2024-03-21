@@ -8,9 +8,14 @@ docker run -itd --name my_hexo -p 4000:4000 -v hexo_data:/home/hexo/.hexo 你的
 在容器外使用命令
 ```bash
 docker exec my_hexo <command>
+
 #例如：hexo -v
 docker exec my_hexo hexo -v
-#返回版本信息，相当于进入容器后，执行 hexo -v 
+#打印版本信息，相当于进入容器后，执行 hexo -v
+
+#再或者 ls
+docker exec my_hexo ls
+#打印目录信息
 ```
 
 进入容器
