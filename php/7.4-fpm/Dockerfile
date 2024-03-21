@@ -4,8 +4,6 @@ LABEL maintainer="sulcmil@gmail.com"
 
 # PHP
 ENV PHP_MODS_DIR=/etc/php/7.4/mods-available
-ENV PHP_CLI_CONF_DIR=/etc/php/7.4/cli/conf.d
-ENV PHP_CGI_CONF_DIR=/etc/php/7.4/cgi/conf.d
 ENV PHP_FPM_DIR=/etc/php/7.4/fpm
 ENV PHP_FPM_CONF_DIR=${PHP_FPM_DIR}/conf.d
 ENV PHP_FPM_POOL_DIR=${PHP_FPM_DIR}/pool.d
@@ -19,21 +17,11 @@ RUN usermod -u ${USER_ID} www-data && \
 
 # INSTALLATION
 RUN apt update && apt dist-upgrade -y && \
-    # DEPENDENCIES #############################################################
-    apt install -y wget curl apt-transport-https ca-certificates lsb-release git unzip && \
-    # PHP DEB.SURY.CZ ##########################################################
-    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list && \
-    apt update && \
-    apt dist-upgrade -y && \
     apt install -y --no-install-recommends \
-        #php7.4-apc \
         php7.4-apcu \
         php7.4-bz2 \
         php7.4-bcmath \
         php7.4-calendar \
-        php7.4-cgi \
-        php7.4-cli \
         php7.4-ctype \
         php7.4-curl \
         php7.4-fpm \
@@ -55,17 +43,13 @@ RUN apt update && apt dist-upgrade -y && \
         php7.4-zip \
         php7.4-xmlrpc \
         php7.4-xsl && \
-    # COMPOSER #################################################################
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2 && \
     # PHP MOD(s) ###############################################################
-    ln -s ${PHP_MODS_DIR}/custom.ini ${PHP_CLI_CONF_DIR}/999-custom.ini && \
-    ln -s ${PHP_MODS_DIR}/custom.ini ${PHP_CGI_CONF_DIR}/999-custom.ini && \
     ln -s ${PHP_MODS_DIR}/custom.ini ${PHP_FPM_CONF_DIR}/999-custom.ini && \
     # CLEAN UP #################################################################
-    rm ${PHP_FPM_POOL_DIR}/www.conf && \
+    rm -rf ${PHP_FPM_POOL_DIR}/www.conf && \
+    rm -rf /etc/php/7.4/cli && \
     apt-get clean -y && \
     apt-get autoclean -y && \
-    apt-get remove -y wget curl lsb-release && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
 
