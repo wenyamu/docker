@@ -3,9 +3,12 @@ FROM dockette/debian:bullseye-slim
 # TENGINE/NGINX
 ENV TENGINE_VERSION 3.1.0
 
-# PHP-FPM
+ENV PHP_MODS_DIR=/etc/php/7.4/mods-available
+ENV PHP_FPM_DIR=/etc/php/7.4/fpm
+
+# PHP-FPM supervisor configure
 ENV PHP_FPM_BIN=/usr/sbin/php-fpm7.4
-ENV PHP_FPM_CONF=/etc/php/7.4/php-fpm.conf
+ENV PHP_FPM_CONF=${PHP_FPM_DIR}/php-fpm.conf
 
 ENV TZ=Europe/Prague
 
@@ -126,8 +129,11 @@ RUN apt install -y --no-install-recommends \
         php7.4-zip \
         php7.4-xmlrpc \
         php7.4-xsl && \
-    rm -rf /etc/php/7.4/cli && \
+    # PHP MOD(s)
+    ln -s ${PHP_MODS_DIR}/custom.ini ${PHP_FPM_DIR}/conf.d/999-custom.ini && \
     # CLEAN
+    rm -rf ${PHP_FPM_DIR}/pool.d/www.conf && \
+    rm -rf /etc/php/7.4/cli && \
     apt-get clean -y && \
     apt-get autoclean -y && \
     apt-get remove -y gcc make curl ca-certificates && \
@@ -137,9 +143,9 @@ RUN apt install -y --no-install-recommends \
 # CRON
 RUN truncate -s 0 /etc/crontab
 
-# PHP
-ADD ./php/php-fpm.conf /etc/php/7.4/
-ADD ./php/php.ini /etc/php/7.4/conf.d/
+# PHP-FPM
+ADD ./php/php-fpm.conf ${PHP_FPM_DIR}/php-fpm.conf
+ADD ./php/custom.ini ${PHP_MODS_DIR}/custom.ini
 
 # NGINX
 ADD ./nginx/nginx.conf /etc/nginx/
