@@ -3,7 +3,7 @@ vsftpd 多用户 docker 配置
 
 ## 创建镜像
 #进入目录中 \
-cd centos-vsftpd \
+cd vsftpd-centos \
 #在此目录中执行 \
 docker build -t vsftpd:centos7 . \
 #vsftpd:centos7 表示镜像名:标签名 \
