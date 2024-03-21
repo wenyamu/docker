@@ -1,12 +1,12 @@
 
 vsftpd 多用户 docker 配置
 
-################ 创建镜像 ################ \
-#进入一个目录中
-cd centos-vsftpd
-#在此目录中执行
-docker build -t vsftpd:centos7 .
-#vsftpd:centos7 表示镜像名:标签名
+## 创建镜像 ################ \
+#进入一个目录中 \
+cd centos-vsftpd \
+#在此目录中执行 \
+docker build -t vsftpd:centos7 . \
+#vsftpd:centos7 表示镜像名:标签名 \
 最后的.号表示Dockerfile文件在当前目录中
 
 ################ 部署 docker 容器 ################ \
