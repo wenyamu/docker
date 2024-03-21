@@ -24,7 +24,7 @@ echo -e "ljs\nljsljs" >> /etc/vsftpd/virtual_users.pwd #添加用户和密码到
 #以下步骤也可直接重启容器实现
 mkdir -p /home/vsftpd/ljs #创建用户的目录
 cat > /etc/vsftpd/usersconfig/ljs << EOF
-# 此配置文件针对虚拟用户的个性配置，修改后用户重新登陆即可生效，不需要重启vsftpd服务
+#此配置文件针对虚拟用户的个性配置，修改后用户重新登陆即可生效，不需要重启vsftpd服务
 ...
 ...
 EOF
