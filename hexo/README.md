@@ -15,7 +15,7 @@ docker exec my_hexo hexo -v
 
 #再或者 ls -al
 docker exec my_hexo ls -al
-#打印目录信息
+#打印目录信息，相当于进入容器后，执行 ls -al
 ```
 
 进入容器
