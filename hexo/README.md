@@ -29,6 +29,14 @@ hexo generate
 docker exec -it -u root my_hexo sh
 hexo generate
 ```
+安装主题
+> https://theme-stun.github.io/docs/zh-CN/guide/quick-start.html
+
+在 Hexo 根目录下，执行指令：
+```sh
+~/.hexo $ git clone https://github.com/liuyib/hexo-theme-stun.git themes/stun
+```
+
 常用命令
 https://hexo.io/zh-cn/docs/commands
 ```bash
