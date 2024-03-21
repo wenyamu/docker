@@ -5,9 +5,12 @@ docker run -itd --name my_hexo -p 4000:4000 -v hexo_data:/home/hexo/.hexo 你的
 ```
 访问 `http://0.0.0.0:4000`
 
-使用
+在容器外使用命令
 ```bash
-docker exec my_hexo hexo <command>
+docker exec my_hexo <command>
+#例如：hexo -v
+docker exec my_hexo hexo -v
+#返回版本信息，相当于进入容器后，执行 hexo -v 
 ```
 
 进入容器
