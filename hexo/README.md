@@ -32,8 +32,8 @@ hexo generate
 常用命令
 https://hexo.io/zh-cn/docs/commands
 ```bash
-hexo server   简写 hexo s #启动hexo服务
-hexo clean    简写 hexo c #清除缓存文件 (db.json) 和已生成的静态文件 (public)
+hexo server   #启动hexo服务
+hexo clean    #清除缓存文件 (db.json) 和已生成的静态文件 (public)
 hexo generate 简写 hexo g #生成静态文件
 hexo deploy   简写 hexo d #部署到远程Github仓库
 ```
