@@ -13,8 +13,8 @@ docker exec my_hexo <command>
 docker exec my_hexo hexo -v
 #打印版本信息，相当于进入容器后，执行 hexo -v
 
-#再或者 ls
-docker exec my_hexo ls
+#再或者 ls -al
+docker exec my_hexo ls -al
 #打印目录信息
 ```
 
