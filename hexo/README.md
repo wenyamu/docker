@@ -2,7 +2,7 @@
 ```bash
 #创建卷/var/lib/docker/volumes/my_hexo_data/_data
 docker volume create my_hexo_data
-docker run -itd --name my_hexo -p 4000:4000 -v my_hexo_data:/home/hexo/.hexo 你的hexo镜像源
+docker run -itd --name my_hexo --restart=always -p 4000:4000 -v my_hexo_data:/home/hexo/.hexo 你的hexo镜像源
 ```
 访问 `http://0.0.0.0:4000`
 
