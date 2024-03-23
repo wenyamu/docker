@@ -2,7 +2,7 @@
 
 # 如果项目根目录 /home/hexo/.hexo 是空的, 就初始化博客并安装相关依赖包
 if [ -z "$(ls)" ]; then
-	hexo init
+  hexo init
   npm install \
       hexo-admin \
       hexo-toc \
@@ -11,7 +11,6 @@ if [ -z "$(ls)" ]; then
       hexo-generator-search \
       hexo-deployer-rsync \
       hexo-deployer-git
-
 fi
 
 # 启动 hexo
