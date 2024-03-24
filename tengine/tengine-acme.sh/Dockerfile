@@ -131,6 +131,6 @@ ADD ./supervisor/services /etc/supervisor/conf.d/
 
 EXPOSE 80 443
 
-COPY entrypoint.sh /usr/sbin/entrypoint.sh
-RUN chmod +x /usr/sbin/entrypoint.sh
-ENTRYPOINT ["/bin/sh", "/usr/sbin/entrypoint.sh"]
+COPY entry.sh /entry.sh
+RUN chmod +x /entry.sh
+ENTRYPOINT ["/entry.sh"]

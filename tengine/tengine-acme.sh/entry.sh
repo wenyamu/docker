@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 # loop through all the environment variables and append them to /etc/environment
 # because cron doesn't "see" docker environment variables
