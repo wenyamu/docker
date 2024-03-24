@@ -10,6 +10,7 @@ tengine + acme.sh 二合一
 ```sh
 docker run -itd \
 -p 80:80 \
+-p 443:443 \
 -v /root/out:/acme.sh \
 -v /root/ssl:/ssl \
 --name tacme \
@@ -22,6 +23,17 @@ docker exec tacme acme.sh -v
 #https://github.com/acmesh-official/acme.sh
 #v3.0.8
 ```
+
+### 绑定一个邮箱，不然会提示无法生成证书
+#acme.sh 默认是使用 zerossl 颁布证书，需要绑定邮箱。
+
+#如果切换成使用 letsencrypt 颁布证书就不需要绑定邮箱。
+
+#绑定邮箱后，申请的证书记录可以在web页面 https://app.zerossl.com/certificates/issued 查看
+```sh
+docker exec tacme acme.sh --register-account -m abc@qq.com
+```
+
 ### 申请ssl证书
 #因为80端口被nginx占用，所以 `--standalone` 模式下要指定另外的端口 `--httpport 81`
 
@@ -44,6 +56,12 @@ docker exec tacme acme.sh --install-cert \
 --fullchain-file /ssl/fullchain.pem \
 --cert-file      /ssl/cert.pem \
 --ca-file        /ssl/ca.pem
+```
+
+### 切换默认证书申请服务器 zerossl 或 letsencrypt
+```sh
+docker exec tacme acme.sh --set-default-ca --server letsencrypt
+docker exec tacme acme.sh --set-default-ca --server zerossl
 ```
 
 ### 查看容器中定时任务
