@@ -40,10 +40,10 @@ docker exec tacme acme.sh --issue \
 ```sh
 docker exec tacme acme.sh --install-cert \
 -d abc.com \
---key-file       /acme.sh/ssl/key.pem \
---fullchain-file /acme.sh/ssl/fullchain.pem \
---cert-file      /acme.sh/ssl/cert.pem \
---ca-file        /acme.sh/ssl/ca.pem
+--key-file       /ssl/key.pem \
+--fullchain-file /ssl/fullchain.pem \
+--cert-file      /ssl/cert.pem \
+--ca-file        /ssl/ca.pem
 ```
 
 ### 查看容器中定时任务
