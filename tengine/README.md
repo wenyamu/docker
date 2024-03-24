@@ -11,7 +11,7 @@ tengine + acme.sh 二合一
 docker run -itd \
 -p 80:80 \
 -v /root/out:/acme.sh \
--v /root/out/ssl:/acme.sh/ssl \
+-v /root/ssl:/ssl \
 --name tacme \
 tengine-acme.sh
 ```
