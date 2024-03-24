@@ -2,8 +2,6 @@ FROM neilpang/acme.sh:latest
 
 ENV TENGINE_VERSION 3.1.0
 
-# nginx: https://git.io/vSIyj
-
 RUN rm -rf /var/cache/apk/* && \
     rm -rf /tmp/*
 
@@ -124,10 +122,10 @@ RUN     addgroup -S nginx \
         && touch /var/log/supervisor/supervisord.log
 
 # nginx
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
+ADD ./nginx/nginx.conf /etc/nginx/
+ADD ./nginx/default.conf /etc/nginx/conf.d/
 
-# SUPERVISOR
+# supervisor
 ADD ./supervisor/supervisord.conf /etc/supervisor/
 ADD ./supervisor/services /etc/supervisor/conf.d/
 
