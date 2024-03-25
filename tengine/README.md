@@ -8,7 +8,7 @@ tengine + acme.sh 二合一
 
 > 有缺点：违背了docker容器只运行一个程序的初心，再一个docker容器中运行多个程序，会让容器反应变慢，就拿docker restart tacme 重启容器来说，重启耗时很长。
 
-### docker容器
+### 不推荐的做法， tengine + acme.sh docker 容器
 ```sh
 docker run -itd \
 -p 80:80 \
@@ -17,6 +17,16 @@ docker run -itd \
 -v /root/ssl:/ssl \
 --name tacme \
 tengine-acme.sh
+```
+
+### 推荐的做法，单独以 docker 守护进程运行 acme.sh 程序
+```sh
+docker run --rm  -itd  \
+  -v "$(pwd)/out":/acme.sh  \
+  -v "$(pwd)/ssl":/ssl \
+  --net=host \
+  --name=tacme \
+  neilpang/acme.sh daemon
 ```
 
 ### 测试 acme.sh 是否正常运行
