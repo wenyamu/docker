@@ -17,10 +17,10 @@ docker run -itd \
 tengine-acme.sh
 ```
 
-### 推荐的做法，单独以 docker 守护进程运行 acme.sh 程序
+### 推荐的做法，nginx与acme.sh各自分开，单独以 docker 守护进程运行 acme.sh 程序
 ```sh
-docker run --rm  -itd  \
-  -v "$(pwd)/out":/acme.sh  \
+docker run --rm  -itd \
+  -v "$(pwd)/out":/acme.sh \
   -v "$(pwd)/ssl":/ssl \
   --net=host \
   --name=tacme \
