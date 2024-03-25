@@ -6,6 +6,8 @@ https://github.com/Axizdkr/tengine/tree/master
 tengine + acme.sh 二合一
 用 supervisor 管理 nginx 和 cron
 
+> 有缺点：违背了docker容器只运行一个程序的初心，再一个docker容器中运行多个程序，会让容器反应变慢，就拿docker restart tacme 重启容器来说，重启耗时很长。
+
 ### docker容器
 ```sh
 docker run -itd \
