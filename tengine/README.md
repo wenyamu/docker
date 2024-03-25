@@ -48,6 +48,17 @@ docker exec tacme acme.sh --issue \
 --httpport 81
 ```
 
+#如果出现超时`Timeout`或者`404`找不到https://www.abc.im/.well-known/acme-challenge/xxxxxx 文件
+#这种情况一般出现在，你的nginx环境已经搭建好,nginx配置文件也已经配置好。如果只是acme.sh单容器，使用`--standalone` 模式就可以成功
+#需要你指定 `-w /etc/nginx/html/abc.im`
+```sh
+docker exec tacme acme.sh --issue \
+  -d abc.im \
+  -d www.abc.im \
+  -w /etc/nginx/html/abc.im \
+  --keylength ec-256
+```
+
 ### 复制证书到指定目录(此目录必须已经存在)
 ```sh
 docker exec tacme acme.sh --install-cert \
