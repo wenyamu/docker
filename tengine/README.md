@@ -66,10 +66,10 @@ docker exec tacme acme.sh --issue \
 ```sh
 docker exec tacme acme.sh --install-cert \
 -d abc.com \
---key-file       /ssl/key.pem \
---fullchain-file /ssl/fullchain.pem \
---cert-file      /ssl/cert.pem \
---ca-file        /ssl/ca.pem
+--key-file       /ssl/abc.im/key.pem \
+--fullchain-file /ssl/abc.im/fullchain.pem \
+--cert-file      /ssl/abc.im/cert.pem \
+--ca-file        /ssl/abc.im/ca.pem
 ```
 
 ### 切换默认证书申请服务器 zerossl 或 letsencrypt
