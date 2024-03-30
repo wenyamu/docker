@@ -2,24 +2,33 @@
 vsftpd 多用户 docker 配置
 
 ## 创建镜像
+```sh
 #进入目录中 \
 cd vsftpd-centos \
 #在此目录中执行 \
 docker build -t vsftpd:centos7 . \
 #vsftpd:centos7 表示镜像名:标签名 \
-最后的.号表示Dockerfile文件在当前目录中
+#最后的.号表示Dockerfile文件在当前目录中
+```
 
 ## 部署 docker 容器
-docker run -d -v /my/data/directory:/home/vsftpd \ \
--v /my/data/usersconfig:/etc/vsftpd/usersconfig \ \
--v /my/data/vsftpd.conf:/etc/vsftpd/vsftpd.conf \ \
--v /my/data/virtual_users.pwd:/etc/vsftpd/virtual_users.pwd \ \
--p 20:20 -p 21:21 -p 21100-21110:21100-21110 \ \
+```sh
+docker run -d \
+-v /my/data/directory:/home/vsftpd \
+-v /my/data/usersconfig:/etc/vsftpd/usersconfig \
+-v /my/data/vsftpd.conf:/etc/vsftpd/vsftpd.conf \
+-v /my/data/virtual_users.pwd:/etc/vsftpd/virtual_users.pwd \
+-p 20:20 \
+-p 21:21 \
+-p 21100-21110:21100-21110 \
 --name vsftpd --restart=always vsftpd:centos7
+```
 
 ## 进入容器 新建用户 （此步骤已经由 inotify 监控自动执行，这里仅做原理说明）
+```sh
 docker exec -it vsftpd bash #进入容器 \
-echo -e "ljs\nljsljs" >> /etc/vsftpd/virtual_users.pwd #添加用户和密码到文件 \
+echo -e "ljs\nljsljs" >> /etc/vsftpd/virtual_users.pwd #添加用户和密码到文件
+```
 
 #以下步骤也可直接重启容器实现 \
 mkdir -p /home/vsftpd/ljs #创建用户的目录 \
