@@ -32,15 +32,15 @@ echo -e "ljs\nljsljs" >> /etc/vsftpd/virtual_users.pwd
 
 >#以下步骤也可直接重启容器实现
 ```sh
-mkdir -p /home/vsftpd/ljs #创建用户的目录 \
-cat > /etc/vsftpd/usersconfig/ljs << EOF \
-#此配置文件针对虚拟用户的个性配置，修改后用户重新登陆即可生效，不需要重启vsftpd服务 \
-... \
-... \
-EOF \
-#设置目录权限，每次新建用户目录时，都要执行一次 \
-chown -R www-data:www-data /home/vsftpd/ \
-#重新生成数据库文件 \
+mkdir -p /home/vsftpd/ljs #创建用户的目录
+cat > /etc/vsftpd/usersconfig/ljs << EOF
+#此配置文件针对虚拟用户的个性配置，修改后用户重新登陆即可生效，不需要重启vsftpd服务
+...
+...
+EOF
+#设置目录权限，每次新建用户目录时，都要执行一次
+chown -R www-data:www-data /home/vsftpd/
+#重新生成数据库文件
 /usr/bin/db_load -T -t hash -f /etc/vsftpd/virtual_users.pwd /etc/vsftpd/virtual_users.db
 ```
 ## supervisor
