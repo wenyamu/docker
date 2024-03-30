@@ -49,7 +49,7 @@ chown -R www-data:www-data /home/vsftpd/
 >使用 supervisor 管理 vsftpd 和 inotify 进程 \
 ```sh
 #inotify监控/etc/vsftpd/virtual_users.pwd 文件被修改，执行"使用方法"的步骤2的4条命令，即可登陆ftp
-inotifywait -mrq -e modify "$file_path" | while read EVENT FILE; do
+inotifywait -mrq -e modify /etc/vsftpd/virtual_users.pwd | while read EVENT FILE; do
   ...
 done
 ```
