@@ -1,4 +1,5 @@
-FROM alpine:latest
+#FROM alpine:latest
+FROM alpine:3.19
 
 # 安装所需的依赖项
 #RUN apk add --update --no-cache git=2.38.5-r0 nodejs=18.17.1-r0 npm=9.1.2-r0 rsync=3.2.7-r0
