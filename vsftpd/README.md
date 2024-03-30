@@ -24,13 +24,13 @@ docker run -d \
 vsftpd:centos7
 ```
 
-## 进入容器 添加用户和密码 （此步骤已经由 inotify 监控自动执行，这里仅做原理说明）
+## 使用方法（以下步骤已经由 inotify 监控自动执行，这里仅做原理说明）
+### 1、进入容器、添加用户和密码
 ```sh
 docker exec -it vsftpd bash \
 echo -e "ljs\nljsljs" >> /etc/vsftpd/virtual_users.pwd
 ```
-
->#以下步骤也可直接重启容器实现
+### 2、创建目录、添加新用户的配置文件等操作（此步骤也可直接重启容器实现）
 ```sh
 mkdir -p /home/vsftpd/ljs #创建用户的目录
 cat > /etc/vsftpd/usersconfig/ljs << EOF
