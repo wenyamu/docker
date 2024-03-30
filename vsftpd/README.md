@@ -46,5 +46,10 @@ chown -R www-data:www-data /home/vsftpd/
 /usr/bin/db_load -T -t hash -f /etc/vsftpd/virtual_users.pwd /etc/vsftpd/virtual_users.db
 ```
 ## supervisor
-使用 supervisor 管理 vsftpd 和 inotify 进程 \
-inotify 用来监控 /etc/vsftpd/virtual_users.pwd 文件，有新用户添加时就执行上面的4条命令，此新用户即可登陆ftp
+>使用 supervisor 管理 vsftpd 和 inotify 进程 \
+```sh
+#inotify监控/etc/vsftpd/virtual_users.pwd 文件被修改，执行"使用方法"的步骤2的4条命令，即可登陆ftp
+inotifywait -mrq -e modify "$file_path" | while read EVENT FILE; do
+  ...
+done
+```
