@@ -19,7 +19,9 @@ docker run -d \
 -p 20:20 \
 -p 21:21 \
 -p 21100-21110:21100-21110 \
---name vsftpd --restart=always vsftpd:centos7
+--name vsftpd \
+--restart=always \
+vsftpd:centos7
 ```
 
 ## 进入容器 添加用户和密码 （此步骤已经由 inotify 监控自动执行，这里仅做原理说明）
