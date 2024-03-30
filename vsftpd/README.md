@@ -30,7 +30,7 @@ vsftpd:centos7
 docker exec -it vsftpd bash \
 echo -e "ljs\nljsljs" >> /etc/vsftpd/virtual_users.pwd
 ```
-### 2、创建目录、添加新用户的配置文件等操作（此步骤也可直接重启容器实现）
+### 2、创建目录、添加新用户的配置文件等操作（完成步骤1的新增用户后，此步骤也可直接重启容器实现）
 ```sh
 #创建用户ftp目录
 mkdir -p /home/vsftpd/ljs
