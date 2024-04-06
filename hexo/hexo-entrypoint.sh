@@ -10,7 +10,8 @@ if [ -z "$(ls)" ]; then
       hexo-renderer-pug \
       hexo-generator-search \
       hexo-deployer-rsync \
-      hexo-deployer-git
+      hexo-deployer-git \
+      hexo-pwa
 fi
 
 # 启动 hexo
