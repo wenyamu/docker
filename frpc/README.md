@@ -8,12 +8,12 @@ docker build -t frpc:0.58.1 .
 > 
 > 适用于CPU架构 arm64
 
-## frps.toml 服务端配置文件
+## frps.toml 公网服务端配置文件
 ```frps.toml
 bindPort = 7000
 ```
 
-## frpc.toml 客户端配置文件详解
+## frpc.toml 局域网客户端配置文件详解
 ```frpc.toml
 ############################
 # 公网服务器开启端口: 6080 #
