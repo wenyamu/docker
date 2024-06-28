@@ -1,3 +1,5 @@
+> https://github.com/fatedier/frp/releases/download/v0.58.1/frp_0.58.1_linux_arm64.tar.gz
+
 ## frp 客户端 docker 镜像
 > frpc客户端版本 0.58.1
 > 
