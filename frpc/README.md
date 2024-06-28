@@ -49,7 +49,9 @@ remotePort = 6080
 loadBalancer.group = "web"
 #loadBalancer.groupKey = "str123"
 
-################ 以下是另一台客户端设备的配置项，如果想在同一台设备使用多个配置，则 localPort 需要指定不同端口
+################ 以下是另一台客户端设备的配置项
+################ 如果想在同一台设备使用多个配置
+################ localPort 需要指定不同端口
 #### 客户端设备002的配置项
 [[proxies]]
 name = "device002"
