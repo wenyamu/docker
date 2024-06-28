@@ -5,7 +5,7 @@
 # 官网 https://gofrp.org/zh-cn/docs/overview/
 
 # 公网服务器ip
-serverAddr = "8.210.236.200"
+serverAddr = "88.218.238.208"
 # 服务端frps与客户端frpc绑定进行通信的端口(此端口只作为两者通信用，具体应用还需要开启相应的端口)
 serverPort = 7000
 
