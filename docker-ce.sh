@@ -158,19 +158,19 @@ function install_docker_ce_ubuntu() {
 echo "确认系统版本并安装对应 docker"
 check_sys(){
     #如果存在 /etc/redhat-release 文件，则为 centos
-	if [[ -f /etc/redhat-release ]]; then
+    if [[ -f /etc/redhat-release ]]; then
         install_docker_ce_centos
-	elif cat /etc/issue | grep -q -E -i "debian|bullseye|bookworm"; then
+    elif cat /etc/issue | grep -q -E -i "debian|bullseye|bookworm"; then
         install_docker_ce_debian
-	elif cat /etc/issue | grep -q -E -i "ubuntu|focal|jammy|mantic"; then
+    elif cat /etc/issue | grep -q -E -i "ubuntu|focal|jammy|mantic"; then
         install_docker_ce_ubuntu
-	elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat"; then
+    elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat"; then
         install_docker_ce_centos
-	#elif cat /proc/version | grep -q -E -i "debian"; then
+    #elif cat /proc/version | grep -q -E -i "debian"; then
     #    install_docker_ce_debian
-	#elif cat /proc/version | grep -q -E -i "ubuntu"; then
+    #elif cat /proc/version | grep -q -E -i "ubuntu"; then
     #    install_docker_ce_ubuntu
-	#elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
+    #elif cat /proc/version | grep -q -E -i "centos|red hat|redhat"; then
     #    install_docker_ce_centos
     fi
 }
