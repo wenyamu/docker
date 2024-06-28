@@ -3,7 +3,8 @@
 docker build -t frpc:0.58.1 .
 ```
 
-
+## frpc.toml 配置文件详解
+```frpc.toml
 ############################
 # 公网服务器开启端口: 6080 #
 ############################
@@ -33,3 +34,4 @@ localPort = 80
 remotePort = 6080
 loadBalancer.group = "web"
 #loadBalancer.groupKey = "str123"
+```
