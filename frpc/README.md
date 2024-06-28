@@ -1,12 +1,12 @@
-## 创建镜像命令
-```
-docker build -t frpc:0.58.1 .
-```
-
 ## frp 客户端 docker 镜像
 > frpc客户端版本 0.58.1
 > 
 > 适用于CPU架构 arm64
+
+## 创建镜像命令
+```
+docker build -t frpc:0.58.1 .
+```
 
 ## frps.toml 公网服务端配置文件
 ```frps.toml
