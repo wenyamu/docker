@@ -1,3 +1,8 @@
+### 创建镜像命令
+```
+docker build -t diy:1 .
+```
+
 ### 部分源码修改自
 https://github.com/Axizdkr/tengine/tree/master
 
