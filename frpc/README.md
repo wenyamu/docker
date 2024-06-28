@@ -5,6 +5,7 @@ docker build -t frpc:0.58.1 .
 
 ## frp 客户端 docker 镜像
 > frpc客户端版本 0.58.1
+> 
 > 适用于CPU架构 arm64
 
 ## frpc.toml 配置文件详解
