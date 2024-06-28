@@ -15,7 +15,7 @@
 
 #使用方法
 #wget -N --no-check-certificate https://www.xxx.com/test/docker3.sh
-#chmod +x ./docker3.sh && ./docker3.sh
+#chmod +x ./docker.sh && ./docker.sh
 
 echo "#############################"
 echo "### 安装 docker-ce        ###"
@@ -28,6 +28,14 @@ echo "### Ubuntu 23.10 (Mantic) ###"
 echo "### Ubuntu 22.04 (Jammy)  ###"
 echo "### Ubuntu 20.04 (Focal)  ###"
 echo "#############################"
+
+# 设置 docker-ce 源(=前后不能有空格)
+## 阿里云源
+#docker_mirrors=https://mirrors.aliyun.com/docker-ce/linux
+
+## 官方源
+docker_mirrors=https://download.docker.com/linux
+
 
 # 注意：定义的函数名不能含有字符"-"
 ### 一，在 centos 上安装 docker-ce
@@ -49,14 +57,13 @@ function install_docker_ce_centos() {
     sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 
     echo "设置yum源"
-    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    sudo yum-config-manager --add-repo $docker_mirrors/centos/docker-ce.repo
 
-    echo "查看docker版本列表"
+    #echo "查看docker版本列表"
     # 可以查看所有仓库中所有docker版本
     #yum list docker-ce --showduplicates | sort -r
-
     # 安装上面查询到的指定docker版本
-    #sudo VERSION_STRING="23.0.6"
+    #VERSION_STRING="23.0.6"
     #sudo yum install -y docker-ce-${VERSION_STRING} docker-ce-cli-${VERSION_STRING} containerd.io docker-buildx-plugin docker-compose-plugin
 
     echo "安装docker ..."
@@ -87,18 +94,26 @@ function install_docker_ce_debian() {
     
     echo "添加Docker官方GPG密钥"
     sudo install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+    curl -fsSL $docker_mirrors/debian/gpg -o /etc/apt/keyrings/docker.asc
     sudo chmod a+r /etc/apt/keyrings/docker.asc
     
     echo "将存储库添加到 Apt 源"
     echo \
-    "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+    "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.asc] $docker_mirrors/debian \
     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
     tee /etc/apt/sources.list.d/docker.list > /dev/null
-    
+
     #安装 Docker 引擎
     echo "更新apt包索引"
     sudo apt-get -y update
+
+    #echo "查看docker版本列表"
+    # 可以查看所有仓库中所有docker版本
+    #apt list -a docker-ce
+    # 安装上面查询到的指定docker版本
+    #VERSION_STRING="5:25.0.5-1~debian.11~bullseye"
+    #sudo apt-get install -y docker-ce=${VERSION_STRING} docker-ce-cli=${VERSION_STRING} containerd.io docker-buildx-plugin docker-compose-plugin
+
     echo "安装 Docker 引擎、containerd 和 Docker Compose 最新版"
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     
@@ -120,12 +135,12 @@ function install_docker_ce_ubuntu() {
     
     echo "添加Docker官方GPG密钥"
     sudo install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    curl -fsSL $docker_mirrors/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
     sudo chmod a+r /etc/apt/keyrings/docker.asc
     
     echo "将存储库添加到 Apt 源"
     echo \
-    "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.asc] $docker_mirrors/ubuntu \
     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
     tee /etc/apt/sources.list.d/docker.list > /dev/null
     
@@ -145,9 +160,9 @@ check_sys(){
     #如果存在 /etc/redhat-release 文件，则为 centos
 	if [[ -f /etc/redhat-release ]]; then
         install_docker_ce_centos
-	elif cat /etc/issue | grep -q -E -i "debian"; then
+	elif cat /etc/issue | grep -q -E -i "debian|bullseye|bookworm"; then
         install_docker_ce_debian
-	elif cat /etc/issue | grep -q -E -i "ubuntu"; then
+	elif cat /etc/issue | grep -q -E -i "ubuntu|focal|jammy|mantic"; then
         install_docker_ce_ubuntu
 	elif cat /etc/issue | grep -q -E -i "centos|red hat|redhat"; then
         install_docker_ce_centos
