@@ -19,5 +19,9 @@ docker build --build-arg VERSION=0.58.1 --build-arg ARCH=amd64 --build-arg APP=f
 > `echo "musl-linux-amd64" | awk -F '-' '{print $NF}'` 返回 `amd64`
 
 ```sh
-docker build --build-arg VERSION=0.58.1 --build-arg ARCH=$(echo $(dpkg --print-architecture) | awk -F '-' '{print $NF}') --build-arg APP=frps -t kk:123 .
+docker build \
+--build-arg VERSION=0.58.1 \
+--build-arg ARCH=$(echo $(dpkg --print-architecture) | awk -F '-' '{print $NF}') \
+--build-arg APP=frps \
+-t my_image:tag .
 ```
