@@ -1,11 +1,17 @@
 FROM alpine:3.15
 
+# 定义变量，在创建时指定变量值
 ARG VERSION
 ARG ARCH
 ARG APP
 
-ENV FRP_VERSION $VERSION
+# 如果创建镜像时未指定版本，则默认为 0.58.1
+ENV FRP_VERSION ${VERSION:-0.58.1}
+
+# 系统架构，例如：amd64 或 arm64
 ENV CPU_ARCH $ARCH
+
+# 指定生成什么类型的镜像，例如：服务端镜像 frps；客户端镜像 frpc
 ENV FRP_APP $APP
 
 RUN apk add --no-cache curl \
