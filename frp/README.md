@@ -8,7 +8,11 @@
 > `APP=frps` 镜像类型，服务端frps 或 客户端frpc
 
 ```sh
-docker build --build-arg VERSION=0.58.1 --build-arg ARCH=amd64 --build-arg APP=frps -t my_image:tag .
+docker build \
+--build-arg VERSION=0.58.1 \
+--build-arg ARCH=amd64 \
+--build-arg APP=frps \
+-t my_image:tag .
 ```
 
 ## 或者
