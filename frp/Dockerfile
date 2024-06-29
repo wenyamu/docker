@@ -26,5 +26,7 @@ RUN apk add --no-cache curl \
     && rm -rf /tmp/* \
     && apk del curl
 
-#CMD ["${FRP_APP}", "-c", "/etc/frp/${FRP_APP}.toml"]
-CMD ${FRP_APP} -c /etc/frp/${FRP_APP}.toml
+WORKDIR /etc/frp/
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+CMD ["/entrypoint.sh"]
