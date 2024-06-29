@@ -11,7 +11,7 @@ ENV FRP_VERSION ${VERSION:-0.58.1}
 # 系统架构，例如：amd64 或 arm64
 ENV CPU_ARCH $ARCH
 
-# 指定生成什么类型的镜像，例如：服务端镜像 frps；客户端镜像 frpc
+# 指定生成什么类型的镜像，例如：服务端镜像 frps 或 客户端镜像 frpc
 ENV FRP_APP $APP
 
 RUN apk add --no-cache curl \
