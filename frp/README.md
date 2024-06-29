@@ -17,6 +17,8 @@ docker build --build-arg VERSION=0.58.1 --build-arg ARCH=amd64 --build-arg APP=f
 > `awk -F '-' '{print $NF}'` 以'-'连接符分隔字符串，并返回最后一个值
 >
 > `echo "musl-linux-amd64" | awk -F '-' '{print $NF}'` 返回 `amd64`
+>
+> `echo "amd64" | awk -F '-' '{print $NF}'` 也是返回 `amd64`
 
 ```sh
 docker build \
