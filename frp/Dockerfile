@@ -6,13 +6,13 @@ ARG ARCH
 ARG APP
 
 # 如果创建镜像时未指定版本，则默认为 0.58.1
-ENV FRP_VERSION ${VERSION:-0.58.1}
+ENV FRP_VERSION=${VERSION:-0.58.1}
 
 # 系统架构，例如：amd64 或 arm64
-ENV CPU_ARCH $ARCH
+ENV CPU_ARCH=$ARCH
 
 # 指定生成什么类型的镜像，例如：服务端镜像 frps 或 客户端镜像 frpc
-ENV FRP_APP $APP
+ENV FRP_APP=$APP
 
 RUN apk add --no-cache curl \
     && curl -L "https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_${CPU_ARCH}.tar.gz" -o frp.tar.gz \
