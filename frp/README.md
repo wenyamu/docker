@@ -31,3 +31,16 @@ docker build \
 --build-arg APP=frps \
 -t my_image:tag .
 ```
+
+## 或者，加上http代理，加速创建镜像
+> --build-arg HTTPS_PROXY="http://192.168.1.3:1080" --build-arg HTTP_PROXY="http://192.168.1.3:1080"
+
+```sh
+docker build \
+--build-arg HTTPS_PROXY="http://192.168.1.3:1080" \
+--build-arg HTTP_PROXY="http://192.168.1.3:1080" \
+--build-arg VERSION=0.58.1 \
+--build-arg ARCH=$(echo $(dpkg --print-architecture) | awk -F '-' '{print $NF}') \
+--build-arg APP=frps \
+-t my_image:tag .
+```
