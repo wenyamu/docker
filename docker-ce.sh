@@ -1,21 +1,11 @@
 #!/bin/bash
 
-#echo "内核版本"
-#uname -r
+# wget使用方法
+#wget -N --no-check-certificate https://www.xxx.com/test/docker-ce.sh
+#chmod +x ./docker-ce.sh && ./docker-ce.sh
 
-#echo "linux版本"
-#centos 系统用 cat /etc/redhat-release 
-#debian 或 ubuntu 系统用 cat /etc/os-release
-
-#echo "系统类型"
-#uname -s
-
-#echo "更新yum"
-#yum update
-
-#使用方法
-#wget -N --no-check-certificate https://www.xxx.com/test/docker3.sh
-#chmod +x ./docker.sh && ./docker.sh
+# curl使用方法
+#curl https://www.xxx.com/test/docker-ce.sh | bash
 
 echo "#############################"
 echo "### 安装 docker-ce        ###"
