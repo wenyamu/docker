@@ -5,7 +5,7 @@
 #chmod +x ./docker-ce.sh && ./docker-ce.sh
 
 # curl使用方法
-#curl https://www.xxx.com/test/docker-ce.sh | bash
+#curl -L https://www.xxx.com/test/docker-ce.sh | bash
 
 echo "#############################"
 echo "### 安装 docker-ce        ###"
